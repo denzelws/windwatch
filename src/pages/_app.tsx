@@ -10,6 +10,8 @@ function App({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <Head>
         <title>WindWatch</title>
+        <link rel="shortcut icon" href="/img/faviconicon.png" />
+        <link rel="apple-touch-icon" href="/img/faviconicon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#06092B" />
         <meta name="description" content="A weather forecast website" />
