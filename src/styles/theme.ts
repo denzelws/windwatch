@@ -1,6 +1,6 @@
 export default {
   grid: {
-    container: '50rem'
+    container: '120rem'
   },
   font: {
     family:
