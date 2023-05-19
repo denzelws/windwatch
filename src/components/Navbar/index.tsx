@@ -1,4 +1,6 @@
+import Button from 'components/Button'
 import * as S from './styles'
+import { WeatherCloudy } from '@styled-icons/typicons'
 
 const logoicon = '/img/tornadologo.png'
 
@@ -21,7 +23,9 @@ const Navbar = () => (
       <h2>About Us</h2>
     </S.NavBox>
 
-    <button>Entre</button>
+    <Button backgroundColor="darkpurple" icon={<WeatherCloudy />}>
+      Open Maps
+    </Button>
   </S.Wrapper>
 )
 
