@@ -1,4 +1,5 @@
 import styled, { DefaultTheme, css } from 'styled-components'
+import { darken, lighten, rgba } from 'polished'
 import { ButtonProps } from '.'
 
 export type WrapperProps = {
@@ -24,7 +25,7 @@ const wrapperModifiers = {
     background: ${theme.colors.black};
   `,
   darkpurple: () => css`
-    background: #231942;
+    background: '#231942';
   `
 }
 
@@ -37,6 +38,25 @@ export const Wrapper = styled.button<WrapperProps>`
     color: ${theme.colors.white};
     background-color: ${theme.colors.black};
     font-size: ${theme.font.sizes.xlarge};
+
+    ${backgroundColor &&
+    ['black', 'darkpurple'].includes(backgroundColor) &&
+    css`
+      &:hover {
+        background-color: ${lighten(
+          0.1,
+          backgroundColor === 'black' ? '#030517' : '#231942'
+        )};
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      &:active {
+        background-color: ${darken(
+          0.1,
+          backgroundColor === 'black' ? '#030517' : '#231942'
+        )};
+      }
+    `}
 
     > span {
       font-size: ${theme.font.sizes.medium};
