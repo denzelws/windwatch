@@ -1,3 +1,4 @@
+import { Search } from '@styled-icons/ionicons-outline'
 import styled, { css } from 'styled-components'
 
 export const ContentSection = styled.div`
@@ -12,6 +13,15 @@ export const InputWrapper = styled.div`
   justify-content: end;
   background: #bde0fe;
   height: 25vh;
+`
+
+export const SearchIcon = styled(Search)`
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 `
 
 export const InputBox = styled.div`
