@@ -3,7 +3,7 @@ import { Container } from 'components/Container'
 import ContentSection from 'components/ContentSection'
 import Navbar from 'components/Navbar'
 
-export default function Home() {
+const Home = () => {
   return (
     <>
       <Navbar />
@@ -14,3 +14,5 @@ export default function Home() {
     </>
   )
 }
+
+export default Home
