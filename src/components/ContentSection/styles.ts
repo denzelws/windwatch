@@ -1,9 +1,14 @@
 import { Search } from '@styled-icons/ionicons-outline'
 import styled, { css } from 'styled-components'
+import media from 'styled-media-query'
 
 export const ContentSection = styled.div`
   display: flex;
   gap: 2rem;
+
+  ${media.lessThan('medium')`
+  flex-direction: column;
+  `}
 `
 
 export const InputWrapper = styled.div`
@@ -13,6 +18,10 @@ export const InputWrapper = styled.div`
   justify-content: end;
   background: #bde0fe;
   height: 25vh;
+
+  ${media.lessThan('medium')`
+  width: 100%;
+  `}
 `
 
 export const SearchIcon = styled(Search)`
@@ -36,6 +45,10 @@ export const InputBox = styled.div`
     > button {
       margin-right: ${theme.spacings.xsmall};
     }
+
+    ${media.lessThan('medium')`
+    width: 100%;
+    `}
   `}
 `
 
