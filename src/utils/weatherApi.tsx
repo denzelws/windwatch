@@ -1,7 +1,13 @@
 import axios from 'axios'
 import { WeatherData } from 'hooks/useWeatherDataList'
 
+const cache = new Map()
+
 const getWeatherData = async (cityName: string) => {
+  if (cache.has(cityName)) {
+    return cache.get(cityName)
+  }
+
   const apiKey = 'ea4023385742a12398dfda46caa285da'
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`
 
