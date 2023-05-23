@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { API_KEY } from '../../config'
 import { WeatherData } from 'hooks/useWeatherDataList'
 
 const cache = new Map()
@@ -8,8 +9,7 @@ const getWeatherData = async (cityName: string) => {
     return cache.get(cityName)
   }
 
-  const apiKey = 'ea4023385742a12398dfda46caa285da'
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`
 
   try {
     const response = await axios.get(apiUrl)

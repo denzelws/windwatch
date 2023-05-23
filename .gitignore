@@ -35,3 +35,6 @@ public/workbox-*.js
 
 # storybook
 storybook-static
+
+#key
+config.js
