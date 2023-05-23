@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { getWeatherData } from 'utils/weatherApi'
 
 export type WeatherData = {
