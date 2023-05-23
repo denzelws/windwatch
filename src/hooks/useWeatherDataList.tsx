@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { getWeatherData } from 'utils/weatherApi'
 
 export type WeatherData = {
@@ -16,13 +16,17 @@ const useWeatherDataList = (cities: string[]) => {
     (WeatherData | null)[]
   >([])
 
-  const fetchWeatherData = async () => {
-    const dataPromises = cities.map((city) => getWeatherData(city))
-    const weatherData = await Promise.all(dataPromises)
-    setWeatherDataList(weatherData)
-  }
+  useEffect(() => {
+    const fetchWeatherData = async () => {
+      const dataPromises = cities.map((city) => getWeatherData(city))
+      const weatherData = await Promise.all(dataPromises)
+      setWeatherDataList(weatherData)
+    }
 
-  fetchWeatherData()
+    if (typeof window !== 'undefined') {
+      fetchWeatherData()
+    }
+  }, []) // Empty dependency array to ensure it runs only on the client side
 
   return weatherDataList
 }
