@@ -1,5 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Container } from 'components/Container'
 import * as S from './styles'
 
 const BannerSection = () => (
