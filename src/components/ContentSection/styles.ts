@@ -21,6 +21,7 @@ export const InputWrapper = styled.div`
 
   ${media.lessThan('medium')`
   width: 100%;
+  height: 10rem;
   `}
 `
 
@@ -67,6 +68,10 @@ export const InformationWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+
+  ${media.lessThan('medium')`
+    width: 100%;
+    `}
 `
 
 export const TitleWrapper = styled.div`
@@ -89,6 +94,12 @@ export const InformationBox = styled.div`
     align-items: center;
     margin: ${theme.spacings.xxsmall};
     color: ${theme.colors.white};
+
+    ${media.lessThan('medium')`
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    `}
   `}
 `
 
@@ -103,6 +114,12 @@ export const Box = styled.div`
     width: 15rem;
     margin: ${theme.spacings.xsmall};
     background: ${theme.colors.darkGray};
+
+    ${media.lessThan('medium')`
+     width: 30rem;
+     height: 12.5rem;
+     margin: 0;
+    `}
   `}
 `
 
@@ -115,11 +132,19 @@ export const City = styled.h2`
 export const Temperature = styled.h2`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.xxlarge};
+
+    ${media.lessThan('medium')`
+     font-size: ${theme.font.sizes.medium};
+    `}
   `}
 `
 
 export const Status = styled.h2`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.small};
+
+    ${media.lessThan('medium')`
+     font-size: ${theme.font.sizes.xsmall};
+    `}
   `}
 `
