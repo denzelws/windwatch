@@ -17,6 +17,12 @@ export const Title = styled.h1`
     padding: ${theme.spacings.medium};
     color: #231942;
     font-weight: ${theme.font.bold};
+
+    ${media.lessThan('medium')`
+    font-size: ${theme.font.sizes.xxlarge};
+    text-align: left;
+    padding: 0 ${theme.spacings.xxsmall};
+  `}
   `}
 `
 
@@ -38,5 +44,10 @@ export const SectionText = styled.h2`
     padding: ${theme.spacings.medium};
     color: ${theme.colors.gray};
     text-align: left;
+
+    ${media.lessThan('medium')`
+    font-size: ${theme.font.sizes.medium};
+    padding: 0 ${theme.spacings.xxsmall};
+  `}
   `}
 `
