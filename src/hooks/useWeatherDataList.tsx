@@ -16,15 +16,13 @@ const useWeatherDataList = (cities: string[]) => {
     (WeatherData | null)[]
   >([])
 
-  useEffect(() => {
-    const fetchWeatherData = async () => {
-      const dataPromises = cities.map((city) => getWeatherData(city))
-      const weatherData = await Promise.all(dataPromises)
-      setWeatherDataList(weatherData)
-    }
+  const fetchWeatherData = async () => {
+    const dataPromises = cities.map((city) => getWeatherData(city))
+    const weatherData = await Promise.all(dataPromises)
+    setWeatherDataList(weatherData)
+  }
 
-    fetchWeatherData()
-  }, [cities])
+  fetchWeatherData()
 
   return weatherDataList
 }
