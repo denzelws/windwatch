@@ -1,9 +1,9 @@
 import axios from 'axios'
-import { API_KEY } from '../../config'
+import { API_KEY, API_ENDPOINT } from '../../config'
 import { WeatherData } from 'hooks/useWeatherDataList'
 
 const getWeatherData = async (cityName: string) => {
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`
+  const apiUrl = `${API_ENDPOINT}?q=${cityName}&appid=${API_KEY}`
 
   try {
     const response = await axios.get(apiUrl)
@@ -14,7 +14,7 @@ const getWeatherData = async (cityName: string) => {
   }
 }
 
-const transformData = (data: WeatherData) => {
+export const transformData = (data: WeatherData) => {
   const kelvinToCelsius = (kelvin: number) => {
     const celsius = kelvin - 273.15
     return celsius.toFixed(2)
