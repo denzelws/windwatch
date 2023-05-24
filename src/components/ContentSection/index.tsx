@@ -1,15 +1,19 @@
-import Button from 'components/Button'
-import useWeatherDataList from 'hooks/useWeatherDataList'
+import axios from 'axios'
 import { ChangeEvent, FormEvent, useState } from 'react'
 
+import { API_ENDPOINT, API_KEY } from '../../../config'
+import { transformData } from 'utils/weatherApi'
+import useWeatherDataList, { WeatherData } from 'hooks/useWeatherDataList'
+import Button from 'components/Button'
+
 import * as S from './styles'
-import axios from 'axios'
-import { API_KEY } from '../../../config'
 
 const ContentSection = () => {
   const cities = ['New York', 'London', 'Canada']
   const [text, setText] = useState('')
-  const [weatherForecast, setWeatherForecast] = useState<any>({})
+  const [weatherForecast, setWeatherForecast] = useState<WeatherData | null>(
+    null
+  )
 
   const weatherDataList = useWeatherDataList(cities)
 
@@ -18,18 +22,12 @@ const ContentSection = () => {
     setText(inputValue)
   }
 
-  const handleIconSubmit = () => {
-    console.log('Icon Submitted:', text)
-  }
-
   const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (text) {
       axios
-        .get(
-          `https://api.openweathermap.org/data/2.5/weather?q=${text}&appid=${API_KEY}`
-        )
+        .get(`${API_ENDPOINT}?q=${text}&appid=${API_KEY}`)
         .then((response) => {
           if (response.status === 200) {
             return response.data
@@ -37,7 +35,8 @@ const ContentSection = () => {
         })
         .then((data) => {
           console.log(data)
-          setWeatherForecast(data)
+          const transformedData = transformData(data)
+          setWeatherForecast(transformedData)
         })
         .catch((error) => {
           console.error(error)
@@ -50,7 +49,7 @@ const ContentSection = () => {
       <S.InputWrapper>
         <S.InputBox>
           <form onSubmit={handleSearch}>
-            <S.SearchIcon size={22} onClick={handleIconSubmit} />
+            <S.SearchIcon size={22} />
             <S.Input
               type="text"
               placeholder="Enter your city..."
@@ -70,7 +69,7 @@ const ContentSection = () => {
         </S.TitleWrapper>
 
         <S.InformationBox>
-          {Object.keys(weatherForecast).length > 0 ? (
+          {weatherForecast ? (
             <>
               <S.Box>
                 <S.City>{weatherForecast.name}</S.City>
